@@ -24,4 +24,11 @@ public class WebMvcConfig implements WebMvcConfigurer {
         return resolver;
     }
 
+//    @Bean
+//    public MessageSource messageSource() {
+//        ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
+//        messageSource.setBasename("classpath:/resources");
+//        return messageSource;
+//    }
+
 }
