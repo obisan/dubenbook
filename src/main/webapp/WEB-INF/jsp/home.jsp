@@ -24,6 +24,10 @@
 
         <a href="<c:url value="/logout" />">Logout</a>
 
+        <br/>
+
+        <a href="<c:url value="/profile/${username}" />">Profile</a>
+
     </div>
 </body>
 </html>
