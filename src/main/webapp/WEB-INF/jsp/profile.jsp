@@ -30,32 +30,69 @@
 <body>
 
 <div class="container">
+    <div class="row">
+        <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
+            <a href="<c:url value="/profile/edit/${profile.user.username}" />" >Edit Profile</a>
 
-    <table>
-        <tr>
-            <td>Имя</td>
-            <td>${profile.first_name}</td>
-        </tr>
-        <tr>
-            <td>Фамилия</td>
-            <td>${profile.last_name}</td>
-        </tr>
-        <tr>
-            <td>Отчество</td>
-            <td>${profile.middle_name}</td>
-        </tr>
-        <tr>
-            <td>Пол</td>
-            <td>${profile.gender}</td>
-        </tr>
-        <tr>
-            <td>Город</td>
-            <td>${profile.city}</td>
-        </tr>
-    </table>
+            <a href="<c:url value="/logout" />">Logout</a>
+            <br>
+            <p class=" text-info">May 05,2014,03:00 pm </p>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
 
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Profile, ${profile.user.username}</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="https://pp.userapi.com/TULJM8K-AasI3c9YSZYTLZbqQeEAzJkXwxZ6Hg/fMDANc9ivhI.jpg?ava=1" class="img-circle img-responsive"> </div>
+
+                        <div class=" col-md-9 col-lg-9 ">
+                            <table class="table table-user-information">
+                                <tbody>
+                                <tr>
+                                    <td>First name</td>
+                                    <td>${profile.first_name}</td>
+                                </tr>
+                                <tr>
+                                    <td>Last name</td>
+                                    <td>${profile.last_name}</td>
+                                </tr>
+
+
+                                <tr>
+                                    <td>Gender</td>
+                                    <td>${profile.gender}</td>
+                                </tr>
+                                <tr>
+                                    <td>City</td>
+                                    <td>${profile.city}</td>
+                                </tr>
+                                <tr>
+                                    <td>Email</td>
+                                    <td><a href="mailto:${profile.user.email}">${profile.user.email}</a></td>
+                                </tr>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <span class="pull-right">
+                            <a href="<c:url value="/profile/edit/${profile.user.username}" />" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+                        </span>
+                </div>
+
+            </div>
+        </div>
+    </div>
 </div>
 <!-- /container -->
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="${contextPath}/resources/js/bootstrap.min.js"></script>
 </body>
