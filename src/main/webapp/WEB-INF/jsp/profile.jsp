@@ -32,11 +32,11 @@
 <div class="container">
     <div class="row">
         <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
-            <a href="<c:url value="/profile/edit/${profile.user.username}" />" >Edit Profile</a>
+            <a href="<c:url value="/home" />" >Home</a> |
+
+            <a href="<c:url value="/profile/edit/${profile.user.username}" />" >Edit Profile</a> |
 
             <a href="<c:url value="/logout" />">Logout</a>
-            <br>
-            <p class=" text-info">May 05,2014,03:00 pm </p>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
 

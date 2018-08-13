@@ -6,6 +6,8 @@ import ru.dubinets.dubenbook.model.Profile;
 import ru.dubinets.dubenbook.model.User;
 import ru.dubinets.dubenbook.repository.ProfileRepository;
 
+import java.util.List;
+
 @Service
 public class ProfileServiceImpl implements ProfileService {
 
@@ -23,6 +25,16 @@ public class ProfileServiceImpl implements ProfileService {
     @Override
     public Profile findByUsername(String username) {
         return profileRepository.findByUser(userService.findUserByUserName(username));
+    }
+
+    @Override
+    public Profile findByEmail(String email) {
+        return profileRepository.findByUser(userService.findUserByEmail(email));
+    }
+
+    @Override
+    public List<Profile> findAll() {
+        return profileRepository.findAll();
     }
 
     @Override

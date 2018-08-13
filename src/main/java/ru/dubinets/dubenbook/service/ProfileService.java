@@ -3,11 +3,15 @@ package ru.dubinets.dubenbook.service;
 import ru.dubinets.dubenbook.model.Profile;
 import ru.dubinets.dubenbook.model.User;
 
+import java.util.List;
+
 public interface ProfileService {
 
-    Profile     findByUser(User user);
-    Profile     findByUsername(String username);
+    Profile         findByUser(User user);
+    Profile         findByUsername(String username);
+    Profile         findByEmail(String email);
+    List<Profile>   findAll();
 
-    void        saveProfile(Profile profile);
+    void            saveProfile(Profile profile);
 
 }

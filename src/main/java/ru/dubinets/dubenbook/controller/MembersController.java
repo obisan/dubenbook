@@ -7,32 +7,26 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
-import ru.dubinets.dubenbook.model.User;
+import ru.dubinets.dubenbook.service.ProfileService;
 import ru.dubinets.dubenbook.service.UserService;
 
 @Controller
-public class HomeController {
+public class MembersController {
+
+    @Autowired
+    private ProfileService profileService;
 
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = {"/home"}, method = RequestMethod.GET)
-    public String home(Model model) {
+    @RequestMapping(value = {"/members"}, method = RequestMethod.GET)
+    public String members(Model model) {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User user = userService.findUserByEmail(auth.getName());
 
-        model.addAttribute("username", user.getUsername());
+        model.addAttribute("user", userService.findUserByEmail(auth.getName()));
+        model.addAttribute("profiles", profileService.findAll());
 
-        return "home";
+        return "members";
     }
-
-    @RequestMapping(value = {"/access_denied"}, method = RequestMethod.GET)
-    public ModelAndView accessDenied() {
-        ModelAndView model = new ModelAndView();
-        model.setViewName("errors/access_denied");
-        return model;
-    }
-
 }

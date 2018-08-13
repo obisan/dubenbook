@@ -35,6 +35,20 @@ public class Profile {
     )
     private User user;
 
+    @OneToOne(
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL,
+            mappedBy = "profile1"
+    )
+    private Friendship friendship1;
+
+    @OneToOne(
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL,
+            mappedBy = "profile2"
+    )
+    private Friendship friendship2;
+
     public Long getId() {
         return id;
     }
@@ -89,5 +103,21 @@ public class Profile {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Friendship getFriendship1() {
+        return friendship1;
+    }
+
+    public void setFriendship1(Friendship friendship1) {
+        this.friendship1 = friendship1;
+    }
+
+    public Friendship getFriendship2() {
+        return friendship2;
+    }
+
+    public void setFriendship2(Friendship friendship2) {
+        this.friendship2 = friendship2;
     }
 }

@@ -33,7 +33,7 @@
     <div class="row">
         <div class="col-md-5  toppad  pull-right col-md-offset-5 ">
             <a href="<c:url value="/home" />" >Home</a> |
-            <a href="<c:url value="/profile/${username}" />" >Profile</a> |
+            <a href="<c:url value="/profile/${username}" />" >Edit Profile</a> |
             <a href="<c:url value="/logout" />">Logout</a>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
@@ -41,27 +41,40 @@
 
             <div class="panel panel-info">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Здравствуйте, ${username}</h3>
+                    <h3 class="panel-title">Здравствуйте, ${user.username}, вот список всех пользователей</h3>
                 </div>
 
-                <div class="col-md-3 col-lg-3" align="center"> <img alt="User Pic" src="https://pp.userapi.com/TULJM8K-AasI3c9YSZYTLZbqQeEAzJkXwxZ6Hg/fMDANc9ivhI.jpg?ava=1" class="img-circle img-responsive"> </div>
 
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-3 ">
-                                    <div class="list-group ">
-                                        <a href="<c:url value="/profile/${username}" />" class="list-group-item list-group-item-action active">Profile</a>
-                                        <a href="<c:url value="/friends" />" class="list-group-item list-group-item-action">Friend</a>
-                                        <a href="<c:url value="/members" />" class="list-group-item list-group-item-action">Members</a>
-                                        <a href="<c:url value="/messages" />" class="list-group-item list-group-item-action">Messages</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <div class="row p-5">
+                    <div class="col-md-12">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th class="border-0 text-uppercase small font-weight-bold">Username</th>
+                                <th class="border-0 text-uppercase small font-weight-bold">First Name</th>
+                                <th class="border-0 text-uppercase small font-weight-bold">Last Name</th>
+                                <th class="border-0 text-uppercase small font-weight-bold">Gender</th>
+                                <th class="border-0 text-uppercase small font-weight-bold">City</th>
+                                <th class="border-0 text-uppercase small font-weight-bold">Invite</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <c:forEach items="${profiles}" var="profile">
+                                <tr>
+                                    <td>${profile.user.username}</td>
+                                    <td>${profile.first_name}</td>
+                                    <td>${profile.last_name}</td>
+                                    <td>${profile.gender}</td>
+                                    <td>${profile.city}</td>
+                                    <td><a href="<c:url value="/friend/invite/${profile.user.username}"/>">button</a></td>
+                                </tr>
+                            </c:forEach>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
+
+
             </div>
         </div>
     </div>

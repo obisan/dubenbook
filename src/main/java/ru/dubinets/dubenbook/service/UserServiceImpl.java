@@ -3,8 +3,10 @@ package ru.dubinets.dubenbook.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import ru.dubinets.dubenbook.model.Profile;
 import ru.dubinets.dubenbook.model.Role;
 import ru.dubinets.dubenbook.model.User;
+import ru.dubinets.dubenbook.repository.ProfileRepository;
 import ru.dubinets.dubenbook.repository.RoleRepository;
 import ru.dubinets.dubenbook.repository.UserRepository;
 
@@ -20,6 +22,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private RoleRepository roleRepository;
+
+    @Autowired
+    private ProfileRepository profileRepository;
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -48,5 +53,10 @@ public class UserServiceImpl implements UserService {
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
 
         userRepository.save(user);
+
+        Profile profile = new Profile();
+        profile.setUser(user);
+
+        profileRepository.save(profile);
     }
 }
