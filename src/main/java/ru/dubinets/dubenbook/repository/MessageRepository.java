@@ -10,5 +10,6 @@ public interface MessageRepository extends JpaRepository<Message, Long> {
 
     List<Message>      findByProfile1(Profile me);
     List<Message>      findByProfile1AndProfile2OrderByDatetime(Profile me, Profile mate);
+    List<Message>      findByProfile1AndProfile2OrProfile2AndProfile1OrderByDatetime(Profile me, Profile mate, Profile me2, Profile mate2);
 
 }

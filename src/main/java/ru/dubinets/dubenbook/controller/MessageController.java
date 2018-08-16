@@ -42,25 +42,25 @@ public class MessageController {
 
         Profile me                  = profileService.getMe();
         Profile mate                = profileService.findByUsername(username);
-        List<Message> messages      = messageService.findByProfile1AndProfile2OrderByDatetime(me, mate);
+        List<Message> messages      = messageService.findAllMessagesBetweenMeAndMateOrderByDatetime(me, mate);
 
         model.addAttribute("me",        me);
         model.addAttribute("mate",      mate);
         model.addAttribute("messages",  messages);
 
-        return "chat/private_chat";
+        return "chat/chat";
     }
 
-    @RequestMapping(value = {"/messages/send"}, method = RequestMethod.POST)
+    @RequestMapping(value = {"/message/send"}, method = RequestMethod.POST)
     public String send(@ModelAttribute("messageForm") Message message, BindingResult bindingResult, Model model) {
 
         if(bindingResult.hasErrors()) {
-            return "chat/private_chat";
+            return "chat/chat";
         } else {
-            messageService.saveChat(message);
+            messageService.saveMessage(message);
         }
 
-        return "chat/private_chat";
+        return "redirect:/messages/" + message.getProfile2().getUser().getUsername();
     }
 
 }

@@ -62,7 +62,7 @@
                                     <td>${profile.user.username}</td>
                                     <td>${profile.first_name}</td>
                                     <td>${profile.last_name}</td>
-                                    <td><a href="<c:url value="/chat/${profile.user.username}"/>">chat</a></td>
+                                    <td><a href="<c:url value="/messages/${profile.user.username}"/>">chat</a></td>
                                 </tr>
                             </c:forEach>
                             </tbody>
