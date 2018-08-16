@@ -1,6 +1,7 @@
 package ru.dubinets.dubenbook.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "profile")
@@ -48,6 +49,20 @@ public class Profile {
             mappedBy = "profile2"
     )
     private Friendship friendship2;
+
+    @OneToMany(
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL,
+            mappedBy = "profile1"
+    )
+    private Set<Message> messages1;
+
+    @OneToMany(
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL,
+            mappedBy = "profile2"
+    )
+    private Set<Message> messages2;
 
     public Long getId() {
         return id;
@@ -119,5 +134,21 @@ public class Profile {
 
     public void setFriendship2(Friendship friendship2) {
         this.friendship2 = friendship2;
+    }
+
+    public Set<Message> getMessages1() {
+        return messages1;
+    }
+
+    public void setMessages1(Set<Message> messages1) {
+        this.messages1 = messages1;
+    }
+
+    public Set<Message> getMessages2() {
+        return messages2;
+    }
+
+    public void setMessages2(Set<Message> messages2) {
+        this.messages2 = messages2;
     }
 }

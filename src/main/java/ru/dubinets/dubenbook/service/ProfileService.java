@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface ProfileService {
 
+    Profile         getMe();
+
     Profile         findByUser(User user);
     Profile         findByUsername(String username);
     Profile         findByEmail(String email);
